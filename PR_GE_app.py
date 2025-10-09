@@ -80,8 +80,8 @@ def PR_GE():
         st.subheader("生成された自己PR")
         st.write(st.session_state["generated_pr"])
         if st.button("コピー"):
-            pyperclip.copy(st.session_state["generated_pr"])
-            st.success("コピーしました！")
+           st.experimental_set_clipboard(st.session_state["generated_pr"])
+           st.success("コピーしました！")
 
 
     #Gemini送信プロント
@@ -150,8 +150,8 @@ def PR_GE():
                             st.write(st.session_state["generated_pr"])
                            
                             if st.button("コピー"):
-                                pyperclip.copy(st.session_state["generated_pr"])
-                                st.success("コピーしました！")
+                               st.experimental_set_clipboard(st.session_state["generated_pr"])
+                               st.success("コピーしました！")
 
                             break
                         else:
@@ -181,6 +181,13 @@ def AI_QU():
     question_count = st.sidebar.slider("質問数", 1, 5,10)
 
 
+    #保持出力内容表示
+    if  st.session_state["generated_qu"] != "" :
+        st.success("🎤 面接想定質問が完成しました！")
+        st.subheader("AI面接官の質問リスト")
+        st.write(st.session_state["generated_qu"])
+
+
     user_pr = st.text_area(
         "自己PRの素材入力（AI面接官に伝えたい実績・自己PR）",
         placeholder="例:\n前職でデータ収集の自動化を提案し、Pythonスクリプトを自作して週10時間の作業削減を実現しました。自己PRを元にAIが面接想定問題を出題します"
@@ -200,13 +207,6 @@ def AI_QU():
     【自己PR】
     {user_pr}
     """
-
-#保持出力内容表示
-    if  st.session_state["generated_qu"] != "" :
-        st.success("🎤 面接想定質問が完成しました！")
-        st.subheader("AI面接官の質問リスト")
-        st.write(st.session_state["generated_qu"])
-
 
     # コールバック関数: API呼び出し前に実行され、フラグをTrueにする
     def set_generating_flag():
