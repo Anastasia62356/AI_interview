@@ -75,7 +75,7 @@ def PR_GE():
     #エピソード入力
     user_episode = st.text_area(
         "実績の詳細エピソード (PRに含めたい具体的な背景・行動・結果)",
-        placeholder="例:\n前職でデータ収集の自動化を提案。Pythonスクリプトを自作し、作業時間を週10時間削減。"
+        placeholder="例:\n前職でデータ収集の自動化を提案。Pythonスクリプトを自作し、作業時間を週10時間削減。この実績を元にPRを構成してください。"
     )
 
 
@@ -197,7 +197,7 @@ def AI_QU():
     #自己PR入力
     user_pr = st.text_area(
         "自己PRの素材入力（AI面接官に伝えたい実績・自己PR）",
-        placeholder="例:\n前職でデータ収集の自動化を提案し、Pythonスクリプトを自作して週10時間の作業削減を実現しました。"
+        placeholder="例:\n前職でデータ収集の自動化を提案し、Pythonスクリプトを自作して週10時間の作業削減を実現しました。自己PRを元にAIが面接想定問題を出題します"
     )
 
     prompt = f"""
@@ -226,7 +226,10 @@ def AI_QU():
     # 送信ボタン。 is_generatingがTrueの間はボタンを無効化
     # on_clickハンドラを追加し、ボタンが押された瞬間にフラグをTrueに設定
     if st.button("面接質問を生成する", disabled=st.session_state["is_generating"], on_click=set_generating_flag) :
-        if not user_pr:
+        if not user_keywords_qu:
+            st.warning("キーワードを最低一つ入力してください。")
+            st.session_state["is_generating"] = False
+        elif not user_pr:
             st.warning("自己PRを入力してください。")
             st.session_state["is_generating"] = False
         elif not user_job_or_subject:
@@ -359,8 +362,11 @@ def AI_EV():
         if not user_question:
             st.warning("質問文を入力してください。")
             st.session_state["is_generating"] = False
-        elif not user_job_or_subject:
+        elif not user_answer:
             st.warning("回答を入力してください。")
+            st.session_state["is_generating"] = False
+        elif not user_job_or_subject:
+            st.warning("職種または学科を入力してください。")
             st.session_state["is_generating"] = False
         else:
             # on_clickでフラグ設定済みのため、ここではスピナー表示とAPI呼び出しのみを行う
@@ -407,4 +413,3 @@ elif user_mode == "AI面接質問":
      AI_QU()
 elif user_mode == "AI面接評価":
      AI_EV()
-
