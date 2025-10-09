@@ -114,11 +114,11 @@ def PR_GE():
         if not user_keywords_ge:
             st.warning("キーワードを最低一つ入力してください。")
             st.session_state["is_generating"] = False
-        elif not user_job_or_subject:
-            st.warning("職種または学科を入力してください。")
-            st.session_state["is_generating"] = False
         elif not user_episode:
             st.warning("エピソードを入力してください。")
+            st.session_state["is_generating"] = False
+        elif not user_job_or_subject:
+            st.warning("職種または学科を入力してください。")
             st.session_state["is_generating"] = False
         else:
             # on_clickでフラグ設定済みのため、ここではスピナー表示とAPI呼び出しのみを行う
