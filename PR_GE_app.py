@@ -3,6 +3,7 @@
 
 import streamlit as st  #Streamli
 import os #環境変数
+import pyperclip
 from google import genai # gemini api
 
 # 環境変数から API キーを取得
@@ -75,9 +76,13 @@ def PR_GE():
 
     #保持出力内容表示
     if  st.session_state["generated_pr"] != "" :
-      st.success("🎉 自己PRが完成しました！")
-      st.subheader("生成された自己PR")
-      st.write(st.session_state["generated_pr"])
+        st.success("🎉 自己PRが完成しました！")
+        st.subheader("生成された自己PR")
+        st.write(st.session_state["generated_pr"])
+        if st.button("コピー"):
+            pyperclip.copy(st.session_state["generated_pr"])
+            st.success("コピーしました！")
+
 
     #Gemini送信プロント
     prompt = f"""
@@ -143,6 +148,11 @@ def PR_GE():
                             st.success("🎉 自己PRが完成しました！")
                             st.subheader("生成された自己PR")
                             st.write(st.session_state["generated_pr"])
+                           
+                            if st.button("コピー"):
+                                pyperclip.copy(st.session_state["generated_pr"])
+                                st.success("コピーしました！")
+
                             break
                         else:
                             # 条件を満たさない場合は再生成
@@ -160,7 +170,7 @@ def PR_GE():
 
 #AI面接
 def AI_QU():
-    
+
     #利用シーンラジオボタン
     user_use = st.sidebar.radio("利用シーン", ["新卒", "転職","学校面接"])
 
@@ -170,7 +180,7 @@ def AI_QU():
     #質問数スライダー
     question_count = st.sidebar.slider("質問数", 1, 5,10)
 
- 
+
     user_pr = st.text_area(
         "自己PRの素材入力（AI面接官に伝えたい実績・自己PR）",
         placeholder="例:\n前職でデータ収集の自動化を提案し、Pythonスクリプトを自作して週10時間の作業削減を実現しました。自己PRを元にAIが面接想定問題を出題します"
