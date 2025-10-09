@@ -284,13 +284,13 @@ def AI_EV():
 
     #質問文入力
     user_question = st.text_area(
-    "質問文",
+    "質問文(面接官に聞かれる質問を入力)",
     placeholder="例:\n自己PRでアピールできる強みを教えてください"
     )
 
     #回答入力
     user_answer = st.text_area(
-    "回答",
+    "回答（質問に対する回答を入力）",
     placeholder="例:\n私の強みは責任感の強さです。どんな状況でも最後までやり遂げる姿勢を大切にしています。"
     )
 
