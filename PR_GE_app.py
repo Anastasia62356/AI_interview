@@ -39,7 +39,7 @@ elif user_mode == "AI面接":
     st.session_state["mode"] = False
 
     
-
+#自己PRジェネレータ
 def PR_GE():
     #利用シーンラジオボタン
     user_use = st.sidebar.radio("利用シーン", ["新卒", "転職","学校面接"])
@@ -155,7 +155,7 @@ def PR_GE():
                         st.session_state["is_generating"] = False
 
 
-
+#AI面接
 def AI_QU():
     
     #利用シーンラジオボタン
