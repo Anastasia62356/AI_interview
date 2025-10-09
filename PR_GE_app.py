@@ -35,12 +35,9 @@ st.sidebar.title("設定")
 user_mode = st.sidebar.radio("モード", ["自己PRジェネレータ", "AI面接"])
 if user_mode == "自己PRジェネレータ":
     st.session_state["mode"] = True
-    st.session_state["generated_pr"] = ""
-    st.session_state["is_generating"] = False
 elif user_mode == "AI面接":
     st.session_state["mode"] = False
-    st.session_state["generated_pr"] = ""
-    st.session_state["is_generating"] = False
+
     
 
 def PR_GE():
