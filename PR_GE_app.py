@@ -79,9 +79,7 @@ def PR_GE():
         st.success("🎉 自己PRが完成しました！")
         st.subheader("生成された自己PR")
         st.write(st.session_state["generated_pr"])
-        if st.button("コピー"):
-           st.experimental_set_clipboard(st.session_state["generated_pr"])
-           st.success("コピーしました！")
+        
 
 
     #Gemini送信プロント
@@ -149,10 +147,6 @@ def PR_GE():
                             st.subheader("生成された自己PR")
                             st.write(st.session_state["generated_pr"])
                            
-                            if st.button("コピー"):
-                               st.experimental_set_clipboard(st.session_state["generated_pr"])
-                               st.success("コピーしました！")
-
                             break
                         else:
                             # 条件を満たさない場合は再生成
