@@ -16,9 +16,12 @@ client = genai.Client(api_key=API_KEY)
 # =========================================================
 # セッションステートの初期化
 # =========================================================
-# セッションステートで生成結果を保持
+# セッションステートでPR生成結果を保持
 if 'generated_pr' not in st.session_state:
     st.session_state["generated_pr"] = ""
+# セッションステートでQU生成結果を保持
+if 'generated_qu' not in st.session_state:
+    st.session_state["generated_qu"] = ""
 # セッションステートで現在のモードを保持
 if 'mode' not in st.session_state:
     st.session_state["mode"] = True
@@ -38,7 +41,7 @@ if user_mode == "自己PRジェネレータ":
 elif user_mode == "AI面接":
     st.session_state["mode"] = False
 
-    
+
 #自己PRジェネレータ
 def PR_GE():
     #利用シーンラジオボタン
@@ -188,10 +191,17 @@ def AI_QU():
     {user_pr}
     """
 
+#保持出力内容表示
+    if  st.session_state["generated_qu"] != "" :
+        st.success("🎤 面接想定質問が完成しました！")
+        st.subheader("AI面接官の質問リスト")
+        st.write(st.session_state["generated_qu"])
+
+
     # コールバック関数: API呼び出し前に実行され、フラグをTrueにする
     def set_generating_flag():
         st.session_state["is_generating"] = True
-        st.session_state["generated_pr"] = "" # 新しい生成の前に以前の結果をクリア
+        st.session_state["generated_qu"] = "" # 新しい生成の前に以前の結果をクリア
 
     # 送信ボタン。 is_generatingがTrueの間はボタンを無効化
     # on_clickハンドラを追加し、ボタンが押された瞬間にフラグをTrueに設定
@@ -212,12 +222,12 @@ def AI_QU():
                       )
 
                     # 結果をセッションステートに保存
-                    st.session_state["generated_pr"] = response.text
+                    st.session_state["generated_qu"] = response.text
 
                     # 結果の表示
                     st.success("🎤 面接想定質問が完成しました！")
                     st.subheader("AI面接官の質問リスト")
-                    st.write(st.session_state["generated_pr"])
+                    st.write(st.session_state["generated_qu"])
 
                 except Exception as e:
                     st.error(f"API呼び出し中にエラーが発生しました: {e}")
