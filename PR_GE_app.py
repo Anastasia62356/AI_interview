@@ -194,7 +194,7 @@ def AI_QU():
     fg = 0
 
     #利用シーンラジオボタン
-    user_use = st.sidebar.radio("利用シーン", ["新卒選考", "転職選考","入学選考"])
+    user_use = st.sidebar.radio("利用シーン", ["新卒選考", "中途選考","入学選考"])
 
     #職種学科入力
     user_job_or_subject = st.sidebar.text_input("職種または学科")
