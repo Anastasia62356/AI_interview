@@ -132,11 +132,11 @@ def PR_GE():
                             model='gemini-2.5-flash',
                             contents=prompt
                         )
-
+                        
                         # 生成結果の文字数をカウント
                         generated_text = response.text.strip()
                         char_count = len(generated_text)
-
+                        
                         #文字数の条件
                         if min_char_count <= char_count <= max_char_count:
                             # 条件を満たした場合のみ表示・保存
@@ -157,7 +157,8 @@ def PR_GE():
                             # 条件を満たさない場合は再生成
                             st.warning(f"再生成します（現在の文字数: {char_count}文字）")
                             
-
+                    if k==4 and st.session_state["generated_ge"] == "" :
+                        st.warning("生成に失敗しました。再試行してください。")
                     except Exception as e:
                         st.error(f"API呼び出し中にエラーが発生しました: {e}")
                         break
@@ -167,7 +168,7 @@ def PR_GE():
                         st.session_state["is_generating"] = False
 
    
-
+    
     #保持出力内容表示
     if  st.session_state["generated_ge"] != "" and fg != 1:
       st.success("🎉 自己PRが完成しました！")
