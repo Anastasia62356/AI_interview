@@ -50,7 +50,6 @@ def PR_GE():
 
     #保持出力内容表示フラグ
     fg = 0
-    k = 0
     #利用シーンラジオボタン
     user_use = st.sidebar.radio("利用シーン", ["新卒", "転職","学校面接"])
 
@@ -77,7 +76,7 @@ def PR_GE():
     #エピソード入力
     user_episode = st.text_area(
         "実績の詳細エピソード (PRに含めたい具体的な背景・行動・結果)",
-        placeholder="例:\n前職でデータ収集の自動化を提案。Pythonスクリプトを自作し、作業時間を週10時間削減。"
+        placeholder="例:\n前職でデータ収集の自動化を提案。Pythonスクリプトを自作し、作業時間を週10時間削減。この実績を元にPRを構成してください。"
     )
 
 
@@ -141,11 +140,13 @@ def PR_GE():
                         if min_char_count <= char_count <= max_char_count:
                             # 条件を満たした場合のみ表示・保存
                             st.session_state["generated_ge"] = generated_text
+                            #保存結果not出力フラグ
                             fg = 1
 
                             st.success("🎉 自己PRが完成しました！")
                             st.subheader("生成された自己PR")
                             st.write(st.session_state["generated_ge"])
+                            #ファイルダウンロードボタン
                             st.download_button(
                             label="📥 ファイルをダウンロード",
                             data=st.session_state["generated_ge"].encode("utf-8"),
@@ -175,6 +176,7 @@ def PR_GE():
       st.success("🎉 自己PRが完成しました！")
       st.subheader("生成された自己PR")
       st.write(st.session_state["generated_ge"])
+      #ファイルダウンロードボタン
       st.download_button(
       label="📥 ファイルをダウンロード",
       data=st.session_state["generated_ge"].encode("utf-8"),
@@ -262,12 +264,14 @@ def AI_QU():
 
                     # 結果をセッションステートに保存
                     st.session_state["generated_qu"] = response.text
+                    #保存結果not出力フラグ
                     fg = 1
 
                     # 結果の表示
                     st.success("🎉 面接想定質問が完成しました！")
                     st.subheader("AI面接官の質問リスト")
                     st.write(st.session_state["generated_qu"])
+                    #ファイルダウンロードボタン
                     st.download_button(
                     label="📥 ファイルをダウンロード",
                     data=st.session_state["generated_qu"].encode("utf-8"),
@@ -289,6 +293,7 @@ def AI_QU():
         st.success("🎤 面接想定質問が完成しました！")
         st.subheader("AI面接官の質問リスト")
         st.write(st.session_state["generated_qu"])
+        #ファイルダウンロードボタン
         st.download_button(
         label="📥 ファイルをダウンロード",
         data=st.session_state["generated_qu"].encode("utf-8"),
@@ -415,12 +420,14 @@ def AI_EV():
 
                     # 結果をセッションステートに保存
                     st.session_state["generated_ev"] = response.text
+                    #保存結果not出力フラグ
                     fg = 1
 
                     # 結果の表示
                     st.success("🎉 評価が完成しました！")
                     st.subheader("AI面接官の評価")
                     st.write(st.session_state["generated_ev"])
+                    #ファイルダウンロードボタン
                     st.download_button(
                     label="📥 ファイルをダウンロード",
                     data=st.session_state["generated_ev"].encode("utf-8"),
@@ -440,6 +447,7 @@ def AI_EV():
         st.success("🎉 評価が完成しました！")
         st.subheader("AI面接官の評価")
         st.write(st.session_state["generated_ev"])
+        #ファイルダウンロードボタン
         st.download_button(
         label="📥 ファイルをダウンロード",
         data=st.session_state["generated_ev"].encode("utf-8"),
