@@ -50,7 +50,7 @@ def PR_GE():
 
     #保持出力内容表示フラグ
     fg = 0
-
+    k = 0
     #利用シーンラジオボタン
     user_use = st.sidebar.radio("利用シーン", ["新卒", "転職","学校面接"])
 
@@ -166,7 +166,8 @@ def PR_GE():
                         # 成功・失敗を問わずフラグを戻す
                         st.session_state["is_generating"] = False
 
-   
+    if k==4 and if st.session_state["generated_ge"] == "":
+        st.warning("5回の再生成を試みましたが、条件に合う自己PRを生成できませんでした。")
     
     #保持出力内容表示
     if  st.session_state["generated_ge"] != "" and fg != 1:
