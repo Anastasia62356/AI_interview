@@ -166,8 +166,7 @@ def PR_GE():
                         # 成功・失敗を問わずフラグを戻す
                         st.session_state["is_generating"] = False
 
-    if k==4 and st.session_state["generated_ge"] == "":
-        st.warning("5回の再生成を試みましたが、条件に合う自己PRを生成できませんでした。")
+
     
     #保持出力内容表示
     if  st.session_state["generated_ge"] != "" and fg != 1:
