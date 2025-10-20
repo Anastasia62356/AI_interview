@@ -147,7 +147,7 @@ def PR_GE():
                             st.download_button(
                             label="📥 ファイルをダウンロード",
                             data=st.session_state["generated_ge"].encode("utf-8"),
-                            file_name="output.txt",
+                            file_name="PR＿GE.txt",
                             mime="text/plain"
                             )
                             break
@@ -267,7 +267,7 @@ def AI_QU():
                     st.download_button(
                     label="📥 ファイルをダウンロード",
                     data=st.session_state["generated_qu"].encode("utf-8"),
-                    file_name="output.txt",
+                    file_name="AI＿QU.txt",
                     mime="text/plain"
                     )
 
@@ -420,7 +420,7 @@ def AI_EV():
                     st.download_button(
                     label="📥 ファイルをダウンロード",
                     data=st.session_state["generated_ev"].encode("utf-8"),
-                    file_name="output.txt",
+                    file_name="AI_EV.txt",
                     mime="text/plain"
                     )
 
