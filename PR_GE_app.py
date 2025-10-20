@@ -149,7 +149,7 @@ def PR_GE():
                             #ファイルダウンロードボタン
                             st.download_button(
                             label="📥 ファイルをダウンロード",
-                            data=st.session_state["generated_ge"].encode("utf-8"),
+                            data=st.session_state["generated_ge"].encode("utf-8-sig"),
                             file_name="PR_GE.txt",
                             mime="text/plain"
                             )
@@ -179,7 +179,7 @@ def PR_GE():
       #ファイルダウンロードボタン
       st.download_button(
       label="📥 ファイルをダウンロード",
-      data=st.session_state["generated_ge"].encode("utf-8"),
+      data=st.session_state["generated_ge"].encode("utf-8-sig"),
       file_name="PR_GE.txt",
       mime="text/plain"
       )
@@ -274,7 +274,7 @@ def AI_QU():
                     #ファイルダウンロードボタン
                     st.download_button(
                     label="📥 ファイルをダウンロード",
-                    data=st.session_state["generated_qu"].encode("utf-8"),
+                    data=st.session_state["generated_qu"].encode("utf-8-sig"),
                     file_name="AI_QU.txt",
                     mime="text/plain"
                     )
@@ -296,7 +296,7 @@ def AI_QU():
         #ファイルダウンロードボタン
         st.download_button(
         label="📥 ファイルをダウンロード",
-        data=st.session_state["generated_qu"].encode("utf-8"),
+        data=st.session_state["generated_qu"].encode("utf-8-sig"),
         file_name="AI_QU.txt",
         mime="text/plain"
     )
@@ -430,7 +430,7 @@ def AI_EV():
                     #ファイルダウンロードボタン
                     st.download_button(
                     label="📥 ファイルをダウンロード",
-                    data=st.session_state["generated_ev"].encode("utf-8"),
+                    data=st.session_state["generated_ev"].encode("utf-8-sig"),
                     file_name="AI_EV.txt",
                     mime="text/plain"
                     )
@@ -450,7 +450,7 @@ def AI_EV():
         #ファイルダウンロードボタン
         st.download_button(
         label="📥 ファイルをダウンロード",
-        data=st.session_state["generated_ev"].encode("utf-8"),
+        data=st.session_state["generated_ev"].encode("utf-8-sig"),
         file_name="AI_EV.txt",
         mime="text/plain"
         )
