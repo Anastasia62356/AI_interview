@@ -144,6 +144,12 @@ def PR_GE():
                             st.success("🎉 自己PRが完成しました！")
                             st.subheader("生成された自己PR")
                             st.write(st.session_state["generated_ge"])
+                            st.download_button(
+                            label="📥 ファイルをダウンロード",
+                            data=st.session_state["generated_ge"].encode("utf-8"),
+                            file_name="output.txt",
+                            mime="text/plain"
+                            )
                             break
                         else:
                             # 条件を満たさない場合は再生成
@@ -165,6 +171,12 @@ def PR_GE():
       st.success("🎉 自己PRが完成しました！")
       st.subheader("生成された自己PR")
       st.write(st.session_state["generated_ge"])
+      st.download_button(
+      label="📥 ファイルをダウンロード",
+      data=st.session_state["generated_ge"].encode("utf-8"),
+      file_name="PR_GE.txt",
+      mime="text/plain"
+      )
 
 
 # ----------------------------------------
@@ -252,6 +264,12 @@ def AI_QU():
                     st.success("🎉 面接想定質問が完成しました！")
                     st.subheader("AI面接官の質問リスト")
                     st.write(st.session_state["generated_qu"])
+                    st.download_button(
+                    label="📥 ファイルをダウンロード",
+                    data=st.session_state["generated_qu"].encode("utf-8"),
+                    file_name="output.txt",
+                    mime="text/plain"
+                    )
 
                 except Exception as e:
                     st.error(f"API呼び出し中にエラーが発生しました: {e}")
@@ -260,13 +278,20 @@ def AI_QU():
                     # 処理の成功/失敗に関わらず、最後にフラグをFalseに戻す
                     st.session_state["is_generating"] = False
 
+
     
     #保持出力内容表示
     if  st.session_state["generated_qu"] != "" and fg != 1:
         st.success("🎤 面接想定質問が完成しました！")
         st.subheader("AI面接官の質問リスト")
         st.write(st.session_state["generated_qu"])
-
+        st.download_button(
+        label="📥 ファイルをダウンロード",
+        data=st.session_state["generated_qu"].encode("utf-8"),
+        file_name="AI_QU.txt",
+        mime="text/plain"
+    )
+    
 
 # ----------------------------------------
 # AI面接評価
@@ -392,6 +417,12 @@ def AI_EV():
                     st.success("🎉 評価が完成しました！")
                     st.subheader("AI面接官の評価")
                     st.write(st.session_state["generated_ev"])
+                    st.download_button(
+                    label="📥 ファイルをダウンロード",
+                    data=st.session_state["generated_ev"].encode("utf-8"),
+                    file_name="output.txt",
+                    mime="text/plain"
+                    )
 
                 except Exception as e:
                     st.error(f"API呼び出し中にエラーが発生しました: {e}")
@@ -400,11 +431,17 @@ def AI_EV():
                     # 処理の成功/失敗に関わらず、最後にフラグをFalseに戻す
                     st.session_state["is_generating"] = False
 
-         #保持出力内容表示
+        #保持出力内容表示
     if  st.session_state["generated_ev"] != "" and fg != 1 :
         st.success("🎉 評価が完成しました！")
         st.subheader("AI面接官の評価")
         st.write(st.session_state["generated_ev"])
+        st.download_button(
+        label="📥 ファイルをダウンロード",
+        data=st.session_state["generated_ev"].encode("utf-8"),
+        file_name="AI_EV.txt",
+        mime="text/plain"
+        )
 
 
 # ----------------------------------------
