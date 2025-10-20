@@ -157,8 +157,7 @@ def PR_GE():
                             # 条件を満たさない場合は再生成
                             st.warning(f"再生成します（現在の文字数: {char_count}文字）")
                             
-                    if k==4 and st.session_state["generated_ge"] == "" :
-                        st.warning("生成に失敗しました。再試行してください。")
+                   
                     except Exception as e:
                         st.error(f"API呼び出し中にエラーが発生しました: {e}")
                         break
