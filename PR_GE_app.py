@@ -28,6 +28,8 @@ if 'generated_ev' not in st.session_state:
 # 追跡用ステート：生成中かどうかを管理
 if 'is_generating' not in st.session_state:
     st.session_state["is_generating"] = False
+
+
 # =========================================================
 
 
@@ -110,7 +112,7 @@ def PR_GE():
 
     # 送信ボタン。 is_generatingがTrueの間はボタンを無効化
     # on_clickハンドラを追加し、ボタンが押された瞬間にフラグをTrueに設定
-    if st.button("自己PRを生成する", disabled=st.session_state["is_generating"], on_click=set_generating_flag):
+    if st.button("🛠️自己PRを生成", disabled=st.session_state["is_generating"], on_click=set_generating_flag):
         if not user_keywords_ge:
             st.warning("キーワードを最低一つ入力してください。")
             st.session_state["is_generating"] = False
@@ -147,14 +149,14 @@ def PR_GE():
                             st.download_button(
                             label="📥 ファイルをダウンロード",
                             data=st.session_state["generated_ge"].encode("utf-8"),
-                            file_name="PR＿GE.txt",
+                            file_name="PR_GE.txt",
                             mime="text/plain"
                             )
                             break
                         else:
                             # 条件を満たさない場合は再生成
                             st.warning(f"再生成します（現在の文字数: {char_count}文字）")
-                            continue
+                            
 
                     except Exception as e:
                         st.error(f"API呼び出し中にエラーが発生しました: {e}")
@@ -164,7 +166,7 @@ def PR_GE():
                         # 成功・失敗を問わずフラグを戻す
                         st.session_state["is_generating"] = False
 
-
+   
 
     #保持出力内容表示
     if  st.session_state["generated_ge"] != "" and fg != 1:
@@ -237,7 +239,7 @@ def AI_QU():
 
     # 送信ボタン。 is_generatingがTrueの間はボタンを無効化
     # on_clickハンドラを追加し、ボタンが押された瞬間にフラグをTrueに設定
-    if st.button("面接質問を生成する", disabled=st.session_state["is_generating"], on_click=set_generating_flag) :
+    if st.button("🛠️面接質問を生成", disabled=st.session_state["is_generating"], on_click=set_generating_flag) :
         if not user_keywords_qu:
             st.warning("キーワードを最低一つ入力してください。")
             st.session_state["is_generating"] = False
@@ -267,7 +269,7 @@ def AI_QU():
                     st.download_button(
                     label="📥 ファイルをダウンロード",
                     data=st.session_state["generated_qu"].encode("utf-8"),
-                    file_name="AI＿QU.txt",
+                    file_name="AI_QU.txt",
                     mime="text/plain"
                     )
 
@@ -390,7 +392,7 @@ def AI_EV():
 
     # 送信ボタン。 is_generatingがTrueの間はボタンを無効化
     # on_clickハンドラを追加し、ボタンが押された瞬間にフラグをTrueに設定
-    if st.button("評価を生成する", disabled=st.session_state["is_generating"], on_click=set_generating_flag) :
+    if st.button("🛠️評価を生成", disabled=st.session_state["is_generating"], on_click=set_generating_flag) :
         if not user_question:
             st.warning("質問文を入力してください。")
             st.session_state["is_generating"] = False
