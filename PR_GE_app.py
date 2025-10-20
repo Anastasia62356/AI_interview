@@ -40,7 +40,7 @@ if 'is_generating' not in st.session_state:
 st.sidebar.title("設定")
 
 #モード選択ラジオボタン
-user_mode = st.sidebar.radio("モード", ["自己PRジェネレータ", "AI面接質問","AI面接評価"])
+user_mode = st.sidebar.radio("モード", ["自己PR生成", "AI面接質問","AI面接評価"])
 
 
 # ----------------------------------------
@@ -51,7 +51,7 @@ def PR_GE():
     #保持出力内容表示フラグ
     fg = 0
     #利用シーンラジオボタン
-    user_use = st.sidebar.radio("利用シーン", ["新卒", "転職","学校面接"])
+    user_use = st.sidebar.radio("利用シーン", ["新卒選考", "中途選考","入学選考"])
 
 
     #職種学科入力
@@ -194,7 +194,7 @@ def AI_QU():
     fg = 0
 
     #利用シーンラジオボタン
-    user_use = st.sidebar.radio("利用シーン", ["新卒", "転職","学校面接"])
+    user_use = st.sidebar.radio("利用シーン", ["新卒選考", "転職選考","入学選考"])
 
     #職種学科入力
     user_job_or_subject = st.sidebar.text_input("職種または学科")
@@ -311,7 +311,7 @@ def AI_EV():
     fg = 0
 
     #利用シーンラジオボタン
-    user_use = st.sidebar.radio("利用シーン", ["新卒", "転職","学校面接"])
+    user_use = st.sidebar.radio("利用シーン", ["新卒選考", "中途選考","入学選考"])
 
     #職種学科入力
     user_job_or_subject = st.sidebar.text_input("職種または学科")
@@ -463,7 +463,7 @@ def AI_EV():
 st.title(user_mode)
 
 #画面遷移
-if   user_mode == "自己PRジェネレータ":
+if   user_mode == "自己PR生成":
      PR_GE()
 elif user_mode == "AI面接質問":
      AI_QU()
