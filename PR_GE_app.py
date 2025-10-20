@@ -165,7 +165,7 @@ def PR_GE():
                     finally:
                         # 成功・失敗を問わずフラグを戻す
                         st.session_state["is_generating"] = False
-                        if st.session_state["generated_ge"] == "" :
+                        if st.session_state["generated_ge"] == "" and k<4:
                             st.warning("再実行してください")
 
 
