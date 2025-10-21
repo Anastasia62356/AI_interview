@@ -55,7 +55,7 @@ def PR_GE():
 
 
     #職種学科入力
-    user_job_or_subject = st.sidebar.text_input("志望職種または学校")
+    user_job_or_subject = st.sidebar.text_input("志望する職種または学校")
 
 
     #文字数スライダー
@@ -197,7 +197,7 @@ def AI_QU():
     user_use = st.sidebar.radio("利用シーン", ["新卒選考", "中途選考","入学選考"])
 
     #職種学科入力
-    user_job_or_subject = st.sidebar.text_input("志望職種または学校")
+    user_job_or_subject = st.sidebar.text_input("志望する職種または学校")
 
     #質問数スライダー
     question_count = st.sidebar.slider("質問数", 1, 5,10)
@@ -314,7 +314,7 @@ def AI_EV():
     user_use = st.sidebar.radio("利用シーン", ["新卒選考", "中途選考","入学選考"])
 
     #職種学科入力
-    user_job_or_subject = st.sidebar.text_input("志望職種または学校")
+    user_job_or_subject = st.sidebar.text_input("志望する職種または学校")
 
     #評価の厳しさスライダー
     strict_level = st.sidebar.slider("評価の厳しさ", 1, 3, 5)
