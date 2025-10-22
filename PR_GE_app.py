@@ -147,7 +147,7 @@ def PR_GE():
                         st.session_state['now_char_count'] = len(generated_text)
 
                         #文字数の条件
-                        if min_char_count <= char_count <= max_char_count:
+                        if min_char_count <= st.session_state["now_char_count"] <= max_char_count:
                             # 条件を満たした場合のみ表示・保存
                             st.session_state["generated_ge"] = generated_text
                             #保存結果not出力フラグ
