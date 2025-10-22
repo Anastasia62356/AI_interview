@@ -63,7 +63,7 @@ def PR_GE():
 
 
     #文字数スライダー
-    char_count = st.sidebar.slider("文字数を選択", 150, 450, 225) 
+    char_count = st.sidebar.slider("文字数を選択", 150, 450, 150) 
     max_char_count = char_count + 20
     min_char_count = char_count - 20
 
@@ -210,7 +210,7 @@ def AI_QU():
     user_job_or_subject = st.sidebar.text_input("志望する職種または学校")
 
     #質問数スライダー
-    question_count = st.sidebar.slider("質問数", 1, 10,5)
+    question_count = st.sidebar.slider("質問数", 1, 10,1)
 
     #キーワード入力
     user_keywords_qu = st.text_area(
@@ -327,7 +327,7 @@ def AI_EV():
     user_job_or_subject = st.sidebar.text_input("志望する職種または学校")
 
     #評価の厳しさスライダー
-    strict_level = st.sidebar.slider("評価の厳しさ", 1, 5, 3)
+    strict_level = st.sidebar.slider("評価の厳しさ", 1, 5, 1)
 
     #質問文入力
     user_question = st.text_area(
