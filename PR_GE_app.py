@@ -213,7 +213,7 @@ def AI_QU():
     user_job_or_subject = st.sidebar.text_input("志望する職種または学校")
 
     #質問数スライダー
-    question_count = st.sidebar.slider("質問数", 1, 10,1)
+    question_count = st.sidebar.slider("質問数", 1, 10, 1)
 
     #キーワード入力
     user_keywords_qu = st.text_area(
