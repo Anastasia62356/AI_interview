@@ -177,7 +177,7 @@ def PR_GE():
 
     #保持出力内容表示
     if  st.session_state["generated_ge"] != "" and fg != 1:
-      st.success("🎉 自己PRが完成しました！")
+      st.success(f"🎉 自己PRが完成しました！（文字数: {char_count}文字）")
       st.subheader("生成された自己PR")
       st.write(st.session_state["generated_ge"])
       #ファイルダウンロードボタン
