@@ -31,6 +31,9 @@ if 'generated_ev' not in st.session_state:
 # 追跡用ステート：生成中かどうかを管理
 if 'is_generating' not in st.session_state:
     st.session_state["is_generating"] = False
+# 表示判定ステート：既に表示しているかどうかを管理
+if 'displayed' not in st.session_state:
+    st.session_state['displayed'] = False
 
 
 
@@ -53,7 +56,7 @@ user_mode = st.sidebar.radio("モード", ["自己PR生成", "AI面接質問","A
 def PR_GE():
 
     #保持出力内容表示フラグ
-    fg = 0
+    st.session_state['displayed'] = False
     #利用シーンラジオボタン
     user_use = st.sidebar.radio("利用シーン", ["新卒選考", "中途選考","入学選考"])
 
@@ -151,7 +154,7 @@ def PR_GE():
                             # 条件を満たした場合のみ表示・保存
                             st.session_state["generated_ge"] = generated_text
                             #保存結果not出力フラグ
-                            fg = 1
+                            st.session_state['displayed'] = True
 
                             st.success(f"🎉 自己PRが完成しました！（文字数: {st.session_state['now_char_count']}文字）")
                             st.subheader("生成された自己PR")
@@ -182,7 +185,7 @@ def PR_GE():
 
 
     #保持出力内容表示
-    if  st.session_state["generated_ge"] != "" and fg != 1:
+    if  st.session_state["generated_ge"] != "" and st.session_state['displayed'] == False:
       st.success(f"🎉 自己PRが完成しました！（文字数: {st.session_state['now_char_count']}文字）")
       st.subheader("生成された自己PR")
       st.write(st.session_state["generated_ge"])
@@ -201,7 +204,7 @@ def PR_GE():
 def AI_QU():
 
     #保持出力内容表示フラグ
-    fg = 0
+    st.session_state['displayed'] = False
 
     #利用シーンラジオボタン
     user_use = st.sidebar.radio("利用シーン", ["新卒選考", "中途選考","入学選考"])
@@ -275,7 +278,7 @@ def AI_QU():
                     # 結果をセッションステートに保存
                     st.session_state["generated_qu"] = response.text
                     #保存結果not出力フラグ
-                    fg = 1
+                    st.session_state['displayed'] = True
 
                     # 結果の表示
                     st.success("🎉 面接想定質問が完成しました！")
@@ -299,7 +302,7 @@ def AI_QU():
 
 
     #保持出力内容表示
-    if  st.session_state["generated_qu"] != "" and fg != 1:
+    if  st.session_state["generated_qu"] != "" and st.session_state['displayed'] == False:
         st.success("🎤 面接想定質問が完成しました！")
         st.subheader("AI面接官の質問リスト")
         st.write(st.session_state["generated_qu"])
@@ -318,7 +321,7 @@ def AI_QU():
 def AI_EV():
 
     #保持出力内容表示フラグ
-    fg = 0
+    st.session_state['displayed'] = False
 
     #利用シーンラジオボタン
     user_use = st.sidebar.radio("利用シーン", ["新卒選考", "中途選考","入学選考"])
@@ -431,7 +434,7 @@ def AI_EV():
                     # 結果をセッションステートに保存
                     st.session_state["generated_ev"] = response.text
                     #保存結果not出力フラグ
-                    fg = 1
+                    st.session_state['displayed'] = True
 
                     # 結果の表示
                     st.success("🎉 評価が完成しました！")
@@ -453,7 +456,7 @@ def AI_EV():
                     st.session_state["is_generating"] = False
 
         #保持出力内容表示
-    if  st.session_state["generated_ev"] != "" and fg != 1 :
+    if  st.session_state["generated_ev"] != "" and st.session_state['displayed'] == False :
         st.success("🎉 評価が完成しました！")
         st.subheader("AI面接官の評価")
         st.write(st.session_state["generated_ev"])
