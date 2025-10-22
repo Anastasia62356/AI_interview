@@ -116,7 +116,7 @@ def PR_GE():
     def set_generating_flag():
         st.session_state["is_generating"] = True
         st.session_state["generated_ge"] = "" # 新しい生成の前に以前の結果をクリア
-        st.session_state["now_char_count"] = char_count
+        
         
 
     # 送信ボタン。 is_generatingがTrueの間はボタンを無効化
