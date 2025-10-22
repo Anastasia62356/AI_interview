@@ -102,7 +102,7 @@ def PR_GE():
     【キーワード】
     キーワード - {keywords_formatted}
 
-    ※前回の生成は {char_count} 文字でした。
+    ※前回の生成は {now_char_count} 文字でした。
     ※今回の文章は、必ず {min_char_count} 文字以上 {max_char_count} 文字以下で作成してください。 
     """
 
@@ -112,6 +112,7 @@ def PR_GE():
     def set_generating_flag():
         st.session_state["is_generating"] = True
         st.session_state["generated_ge"] = "" # 新しい生成の前に以前の結果をクリア
+        now_char_count = char_count
 
     # 送信ボタン。 is_generatingがTrueの間はボタンを無効化
     # on_clickハンドラを追加し、ボタンが押された瞬間にフラグをTrueに設定
@@ -138,7 +139,7 @@ def PR_GE():
 
                         # 生成結果の文字数をカウント
                         generated_text = response.text.strip()
-                        char_count = len(generated_text)
+                        now_char_count = len(generated_text)
 
                         #文字数の条件
                         if min_char_count <= char_count <= max_char_count:
@@ -147,7 +148,7 @@ def PR_GE():
                             #保存結果not出力フラグ
                             fg = 1
 
-                            st.success(f"🎉 自己PRが完成しました！（文字数: {char_count}文字）")
+                            st.success(f"🎉 自己PRが完成しました！（文字数: {now_char_count}文字）")
                             st.subheader("生成された自己PR")
                             st.write(st.session_state["generated_ge"])
                             #ファイルダウンロードボタン
@@ -160,7 +161,7 @@ def PR_GE():
                             break
                         else:
                             # 条件を満たさない場合は再生成
-                            st.warning(f"再生成します（現在の文字数: {char_count}文字）")
+                            st.warning(f"再生成します（現在の文字数: {now_char_count}文字）")
 
 
                     except Exception as e:
@@ -177,7 +178,7 @@ def PR_GE():
 
     #保持出力内容表示
     if  st.session_state["generated_ge"] != "" and fg != 1:
-      st.success(f"🎉 自己PRが完成しました！（文字数: {char_count}文字）")
+      st.success(f"🎉 自己PRが完成しました！（文字数: {now_char_count}文字）")
       st.subheader("生成された自己PR")
       st.write(st.session_state["generated_ge"])
       #ファイルダウンロードボタン
