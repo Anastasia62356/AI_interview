@@ -1,5 +1,5 @@
 #セルをファイルにする
-%%writefile app.py
+#%%writefile app.py
 
 import streamlit as st  #Streamli
 import os #環境変数
