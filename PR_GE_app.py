@@ -35,11 +35,6 @@ if 'is_generating' not in st.session_state:
 if 'displayed' not in st.session_state:
     st.session_state['displayed'] = False
 
-
-
-# =========================================================
-
-
 # ----------------------------------------
 # メイン処理
 # ----------------------------------------
@@ -49,6 +44,8 @@ st.sidebar.title("設定")
 #モード選択ラジオボタン
 user_mode = st.sidebar.radio("モード", ["自己PR生成", "AI面接質問","AI面接評価"])
 
+#タイトル
+st.title(user_mode)
 
 # ----------------------------------------
 # 自己PRジェネレータ
@@ -175,12 +172,10 @@ def PR_GE():
                     except Exception as e:
                         st.error(f"API呼び出し中にエラーが発生しました: {e}")
                         break
-
-                    finally:
-                        # 成功・失敗を問わずフラグを戻す
-                        st.session_state["is_generating"] = False
-                        if st.session_state["generated_ge"] == "" and k >= 4:
-                            st.warning("再実行してください")
+                        
+                st.session_state["is_generating"] = False
+                if st.session_state["generated_ge"] == "":
+                      st.warning("再実行してください")
 
 
 
@@ -407,7 +402,7 @@ def AI_EV():
     全体として(回答全体の印象をまとめる)。
     ---
     ## 改善案
-   フィードバックを反映した、より良い回答のみを生成してください。
+   フィードバックを反映した、より良い回答を生成してください。
   （元の回答の文章をベースに、改善点を修正して1つの回答として出力）
 
     ---
@@ -483,12 +478,8 @@ def AI_EV():
 
 
 # ----------------------------------------
-# メイン処理
+# 画面遷移処理
 # ----------------------------------------
-#タイトル
-st.title(user_mode)
-
-#画面遷移
 if   user_mode == "自己PR生成":
      PR_GE()
 elif user_mode == "AI面接質問":
